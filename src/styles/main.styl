@@ -1,13 +1,42 @@
 @import 'animation'
+@import 'notes'
+@import 'substep'
 
-// Backdrops
-.vortex
-    @extends $bgAnimation
-    background-image url('/images/vortex.jpg')
-    background-position top left
+// Backdrops & Animations
+.bespoke-backdrop-active
+    &.vortex
+        @extends $bgAnimation
+        background-image url('../images/vortex.jpg')
+
+    &.evangelist
+        @extends $bgAnimation
+        background-image url(../images/chief-evangelist.jpg)
+        background-position top right
+
+    &.waldo
+        @extends $bgAnimation
+        background-image url(../images/waldo.jpg)
+        z-index auto
+        background-position bottom right
 
 
+.substep.active.animation-disolve
+    opacity 0
+    animation-delay 5
+    transition opacity 10s ease-in-out
 
-//Slide
+// Deck
+.bespoke-parent
+    background-image linear-gradient(145deg,#004866,#3a393a)
+
+// Slide
 .bespoke-slide
-    background-color rgba(255,255,225,0.8)
+    background-color rgba(255,255,225,0)
+    color #ffffff
+
+// Individual Slides
+[data-bespoke-backdrop=evangelist]
+    background-color rgba(0,0,0,0)
+    color:#ffffff
+
+

@@ -4,8 +4,11 @@ var bespoke = require('bespoke'),
   keys = require('bespoke-keys'),
   touch = require('bespoke-touch'),
   bullets = require('bespoke-bullets'),
+  substeps = require('bespoke-substeps/dom')
   backdrop = require('bespoke-backdrop'),
-  scale = require('bespoke-scale');
+  scale = require('bespoke-scale'),
+  notes = require('bespoke-notes'),
+  sync = require('bespoke-sync/client');
 
 // Bespoke.js
 bespoke.from('article', [
@@ -13,6 +16,9 @@ bespoke.from('article', [
   keys(),
   touch(),
   scale(),
-  bullets('li, .bullet'),
+  notes(),
+  sync(),
+  //bullets('li, .bullet'),
+  substeps(),
   backdrop()
 ]);

@@ -14,7 +14,8 @@ var pkg = require('./package.json'),
   through = require('through'),
   opn = require('opn'),
   ghpages = require('gh-pages'),
-  path = require('path'),
+  path = require('path')
+  syncServerMiddleware = require('bespoke-sync/server')(),
   isDist = process.argv.indexOf('serve') === -1;
 
 gulp.task('js', ['clean:js'], function() {
@@ -85,7 +86,12 @@ gulp.task('clean:images', function() {
 gulp.task('connect', ['build'], function(done) {
   connect.server({
     root: 'dist',
-    livereload: true
+    livereload: true,
+    middleware: function(connect, opt) {
+      return [
+        syncServerMiddleware
+      ]
+    }
   });
 
   opn('http://localhost:8080', done);
